@@ -1,3 +1,5 @@
+该示例通过自己编译的内核代码使用`kpatch` 。
+
 `ubuntu 18.04` 中通过`apt` 安装的`kpatch` 使用存在问题，本文中直接使用的是`github` 最新的代码。
 
 
@@ -85,7 +87,7 @@ Index: net/ipv4/ip_input.c
 ### kpatch生成模块补丁模块
 
 ```bash
-kpatch-build --sourcedir /home/yuchao/workspace/blade/trunk_newkernel/platform/kernel.NEW-x86 --skip-compiler-check --name ip_rcv svn_diff.patch
+kpatch-build --sourcedir /home/yuchao/workspace/blade/trunk_newkernel/platform/kernel.NEW-x86 --skip-compiler-check --debug --target vmlinux --name ip_rcv svn_diff.patch
 ```
 
 命令执行后会生成`ip_rcv.ko` 文件
