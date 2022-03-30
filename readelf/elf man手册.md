@@ -91,6 +91,88 @@
 
 
 
+## String and symbol tables
+
+```c
+           typedef struct {
+               uint32_t      st_name;
+               Elf32_Addr    st_value;
+               uint32_t      st_size;
+               unsigned char st_info;
+               unsigned char st_other;
+               uint16_t      st_shndx;
+           } Elf32_Sym;
+
+           typedef struct {
+               uint32_t      st_name;
+               unsigned char st_info;
+               unsigned char st_other;
+               uint16_t      st_shndx;
+               Elf64_Addr    st_value;
+               uint64_t      st_size;
+           } Elf64_Sym;
+```
+
+
+
+## Relocation entries (Rel & Rela)
+
+```c
+           typedef struct {
+               Elf32_Addr r_offset;
+               uint32_t   r_info;
+           } Elf32_Rel;
+
+           typedef struct {
+               Elf64_Addr r_offset;
+               uint64_t   r_info;
+           } Elf64_Rel;
+
+           typedef struct {
+               Elf32_Addr r_offset;
+               uint32_t   r_info;
+               int32_t    r_addend;
+           } Elf32_Rela;
+
+           typedef struct {
+               Elf64_Addr r_offset;
+               uint64_t   r_info;
+               int64_t    r_addend;
+           } Elf64_Rela;
+```
+
+
+
+## Dynamic tags (Dyn)
+
+```c
+           typedef struct {
+               Elf32_Sword    d_tag;
+               union {
+                   Elf32_Word d_val;
+                   Elf32_Addr d_ptr;
+               } d_un;
+           } Elf32_Dyn;
+           extern Elf32_Dyn _DYNAMIC[];
+
+           typedef struct {
+               Elf64_Sxword    d_tag;
+               union {
+                   Elf64_Xword d_val;
+                   Elf64_Addr  d_ptr;
+               } d_un;
+           } Elf64_Dyn;
+           extern Elf64_Dyn _DYNAMIC[];
+```
+
+
+
+## Notes (Nhdr)
+
+
+
+
+
 
 
 
