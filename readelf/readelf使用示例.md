@@ -62,7 +62,7 @@ ELF Header:
 
 此时，只有`section headers` 没有`program headers`，通过最后三个可以查看`section headers` 的大小以及数量，每个`section headers` 有64 字节，有 13 个`section headers`。
 
-### 显示段信息
+### 显示段头表
 
 ```bash
 $ readelf -S simple_printf.o 
