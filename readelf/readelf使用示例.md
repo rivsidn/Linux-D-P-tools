@@ -126,6 +126,73 @@ String dump of section '.shstrtab':
   [    52]  .rela.eh_frame
 ```
 
+**Tips：** 对比段头表信息发现，总共有 12 (除去第一个为空的段)段表项，但是此处的字符串信息却只有10个，对应不上。通过查看二进制文件发现，`.text` 引用了`.rela.text` 字符串的后半部分，同理`.eh_frame` 引用了`.rela.eh_frame` 的后半部分。
+
+
+
+| 段名            | 作用                      |
+| --------------- | ------------------------- |
+| .text           |                           |
+| .rela.text      |                           |
+| .data           |                           |
+| .bss            |                           |
+| .rodata         |                           |
+| .comment        | 版本控制信息              |
+| .note.GNU-stack |                           |
+| .eh_frame       |                           |
+| .rela.eh_frame  |                           |
+| .symtab         |                           |
+| .strtab         | 符号字符串表              |
+| .shstrtab       | `section header` 字符串表 |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## 可执行文件
