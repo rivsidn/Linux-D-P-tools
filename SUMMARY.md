@@ -16,3 +16,8 @@
   * [readelf man手册](readelf/readelf&#32;man手册.md)
   * [elf文件格式](readelf/elf文件格式.md)
 
+
+## misc
+* [misc](misc/README.md)
+  * [动态调试](动态调试.md)
+
