@@ -3,32 +3,39 @@ PERF-TOP(1)                            perf Manual                           PER
 
 NAME
        perf-top - System profiling tool.
+                  系统采样工具
 
 SYNOPSIS
        perf top [-e <EVENT> | --event=EVENT] [<options>]
 
 DESCRIPTION
        This command generates and displays a performance counter profile in real time.
+       实时显示性能统计信息
 
 OPTIONS
        -a, --all-cpus
            System-wide collection. (default)
+	   默认统计系统范围内的信息
 
        -c <count>, --count=<count>
            Event period to sample.
+	   事件采样周期
 
        -C <cpu-list>, --cpu=<cpu>
            Monitor only on the list of CPUs provided. Multiple CPUs can be provided as a
            comma-separated list with no space: 0,1. Ranges of CPUs are specified with -:
            0-2. Default is to monitor all CPUS.
+	   只监控提供的CPUs列表
 
        -d <seconds>, --delay=<seconds>
            Number of seconds to delay between refreshes.
+	   刷新的时间间隔，单位为秒
 
        -e <event>, --event=<event>
            Select the PMU event. Selection can be a symbolic event name (use perf list
            to list all events) or a raw PMU event (eventsel+umask) in the form of rNNN
            where NNN is a hexadecimal event descriptor.
+	   选择PMU事件，选项可以是符号的事件名或者是原始的PMU事件
 
        -E <entries>, --entries=<entries>
            Display this many functions.
@@ -45,15 +52,18 @@ OPTIONS
 
        -i, --inherit
            Child tasks do not inherit counters.
+	   子进程并不继承统计
 
        -k <path>, --vmlinux=<path>
            Path to vmlinux. Required for annotation functionality.
+	   vmlinux路径
 
        --ignore-vmlinux
            Ignore vmlinux files.
 
        --kallsyms=<file>
            kallsyms pathname
+	   内核符号表路径
 
        -m <pages>, --mmap-pages=<pages>
            Number of mmap data pages (must be a power of two) or size specification with
@@ -62,41 +72,53 @@ OPTIONS
 
        -p <pid>, --pid=<pid>
            Profile events on existing Process ID (comma separated list).
+	   监控特定的进程号
 
        -t <tid>, --tid=<tid>
            Profile events on existing thread ID (comma separated list).
+	   监控特定的线程号
 
        -u, --uid=
            Record events in threads owned by uid. Name or number.
+	   监控特定用户的事件(名称或数字)
 
        -r <priority>, --realtime=<priority>
            Collect data with this RT SCHED_FIFO priority.
+	   设置搜集信息的实时进程优先级
 
        --sym-annotate=<symbol>
            Annotate this symbol.
+	   注释该符号
 
        -K, --hide_kernel_symbols
            Hide kernel symbols.
+	   隐藏内核符号
 
        -U, --hide_user_symbols
            Hide user symbols.
+	   隐藏用户态符号
 
        --demangle-kernel
            Demangle kernel symbols.
+	   拆解内核符号
 
        -D, --dump-symtab
            Dump the symbol table used for profiling.
+	   dump统计的符号表
 
        -v, --verbose
            Be more verbose (show counter open errors, etc).
+	   显示更多信息
 
        -z, --zero
            Zero history across display updates.
+	   显示更新间清空历史记录
 
        -s, --sort
            Sort by key(s): pid, comm, dso, symbol, parent, srcline, weight,
            local_weight, abort, in_tx, transaction, overhead, sample, period. Please see
            description of --sort in the perf-report man page.
+           按照特定信息排序
 
        --fields=
            Specify output field - multiple keys can be specified in CSV format.
@@ -108,9 +130,11 @@ OPTIONS
 
        -n, --show-nr-samples
            Show a column with the number of samples.
+	   显示采样次数栏
 
        --show-total-period
            Show a column with the sum of periods.
+	   多显示period 一栏，应该是时间(具体单位是什么？)
 
        --dsos
            Only consider symbols in these dsos. This option will affect the percentage
@@ -126,6 +150,7 @@ OPTIONS
 
        -M, --disassembler-style=
            Set disassembler style for objdump.
+	   显示反汇编样式
 
        --source
            Interleave source code with assembly code. Enabled by default, disable with
@@ -136,6 +161,7 @@ OPTIONS
 
        -g
            Enables call-graph (stack chain/backtrace) recording.
+	   生成调用关系图记录
 
        --call-graph [mode,type,min[,limit],order[,key][,branch]]
            Setup and enable call-graph (stack chain/backtrace) recording, implies -g.
@@ -164,11 +190,13 @@ OPTIONS
 
        --percent-limit
            Do not show entries which have an overhead under that percent. (Default: 0).
+	   不显示低于该百分比的消耗
 
        --percentage
            Determine how to display the overhead percentage of filtered entries. Filters
            can be applied by --comms, --dsos and/or --symbols options and Zoom
            operations on the TUI (thread, dso, etc).
+	   如何显示过滤表项的百分比显示.
 
                "relative" means it's relative to filtered entries only so that the
                sum of shown entries will be always 100%. "absolute" means it retains
@@ -177,6 +205,7 @@ OPTIONS
        -w, --column-widths=<width[,width...]>
            Force each column width to the provided list, for large terminal readability.
            0 means no limit (default behavior).
+	   限制列宽
 
        --proc-map-timeout
            When processing pre-existing threads /proc/XXX/mmap, it may take a long time,
@@ -209,6 +238,7 @@ OPTIONS
 
        --hierarchy
            Enable hierarchy output.
+	   使能层级显示
 
        --overwrite
            Enable this to use just the most recent records, which helps in high core
@@ -273,9 +303,11 @@ OPTIONS
 INTERACTIVE PROMPTING KEYS
        [d]
            Display refresh delay.
+	   显示刷新间隔
 
        [e]
            Number of entries to display.
+	   显示的表项个数
 
        [E]
            Event to display when multiple counters are active.
