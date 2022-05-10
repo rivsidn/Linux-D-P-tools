@@ -3,6 +3,7 @@ PERF-LIST(1)                           perf Manual                          PERF
 
 NAME
        perf-list - List all symbolic event types
+                   显示所有的时间类型
 
 SYNOPSIS
        perf list [--no-desc] [--long-desc]
@@ -11,19 +12,24 @@ SYNOPSIS
 DESCRIPTION
        This command displays the symbolic event types which can be selected in the
        various perf commands with the -e option.
+       该命令显示在其他的perf命令中可以作为-e 参数选项的所有事件类型。
 
 OPTIONS
        -d, --desc
            Print extra event descriptions. (default)
+	   输出事件描述(默认)
 
        --no-desc
            Don’t print descriptions.
+	   不输出事件描述
 
        -v, --long-desc
            Print longer event descriptions.
+	   输出更长的事件描述
 
        --debug
            Enable debugging output.
+	   使能debug输出
 
        --details
            Print how named events are resolved internally into perf events, and also any
@@ -33,16 +39,26 @@ EVENT MODIFIERS
        Events can optionally have a modifier by appending a colon and one or more
        modifiers. Modifiers allow the user to restrict the events to be counted. The
        following modifiers exist:
+       事件支持添加一个或多个修改器，用户可以通过修改器限制统计的事件。存在的修改器有:
 
            u - user-space counting
+	       用户态统计
            k - kernel counting
+	       内核态统计
            h - hypervisor counting
+	       虚拟机管理程序统计
            I - non idle counting
+	       非idle统计
            G - guest counting (in KVM guests)
+	       虚拟机统计
            H - host counting (not in KVM guests)
+	       宿主机统计
            p - precise level
+	       精确级别
            P - use maximum detected precise level
+	       使用最大监控精确级别
            S - read sample value (PERF_SAMPLE_READ)
+	       获取取样值
            D - pin the event to the PMU
            W - group is weak and will fallback to non-group if not schedulable,
 

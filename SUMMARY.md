@@ -4,6 +4,7 @@
 
 ## perf
 * [perf](perf/README.md)
+  * [perf安装](perf/perf安装.md)
   * [perf manual](perf/manual/README.md)
     * [perf](perf/manual/perf.md)
     * [perf-stat](perf/manual/perf-stat.md)
@@ -22,6 +23,10 @@
 * [readelf](readelf/README.md)
   * [readelf man手册](readelf/readelf man手册.md)
   * [elf文件格式](readelf/elf文件格式.md)
+
+## manual
+* [manual](manual/README.md)
+  * [strace](strace.md)
 
 ## misc
 * [misc](misc/README.md)

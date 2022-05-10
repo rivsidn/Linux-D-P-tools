@@ -3,6 +3,7 @@ PERF-REPORT(1)                         perf Manual                        PERF-R
 
 NAME
        perf-report - Read perf.data (created by perf record) and display the profile
+                     读取perf.data 信息，显示统计信息
 
 SYNOPSIS
        perf report [-i <file> | --input=file]
@@ -10,26 +11,32 @@ SYNOPSIS
 DESCRIPTION
        This command displays the performance counter profile information recorded via
        perf record.
+       显示通过perf record 记录的统计信息
 
 OPTIONS
        -i, --input=
            Input file name. (default: perf.data unless stdin is a fifo)
+	   输入文件名
 
        -v, --verbose
            Be more verbose. (show symbol address, etc)
 
        -q, --quiet
            Do not show any message. (Suppress -v)
+	   不显示任何信息
 
        -n, --show-nr-samples
            Show the number of samples for each symbol
+	   显示符号采样的个数
 
        --show-cpu-utilization
            Show sample percentage for different cpu modes.
+	   显示不同cpu模式的采样百分比
 
        -T, --threads
            Show per-thread event counters. The input data file should be recorded with
            -s option.
+	   显示基于线程的事件统计，统计的时候需要指定 -s 选项。
 
        -c, --comms=
            Only consider symbols in these comms. CSV that understands file://filename
@@ -57,11 +64,13 @@ OPTIONS
 
        -U, --hide-unresolved
            Only display entries resolved to a symbol.
+	   仅显示解析为符号的表项
 
        -s, --sort=
            Sort histogram entries by given key(s) - multiple keys can be specified in
            CSV format. Following sort keys are available: pid, comm, dso, symbol,
            parent, cpu, socket, srcline, weight, local_weight, cgroup_id.
+	   按照给定的keys 给histogram 排序.
 
                Each key has following meaning:
 
@@ -245,6 +254,8 @@ OPTIONS
            order, sort key, optional branch and value. Note that ordering is not fixed
            so any parameter can be given in an arbitrary order. One exception is the
            print_limit which should be preceded by threshold.
+	   注意此处的顺序并不是固定的，所以可以以任意顺序给定参数，但是print_limit 必须
+	   要在threshold 前。
 
                print_type can be either:
                - flat: single column, linear exposure of call chains.
@@ -368,6 +379,8 @@ OPTIONS
            Display extended information about the perf.data file. This adds information
            which may be very large and thus may clutter the display. It currently
            includes: cpu and numa topology of the host system.
+	   显示拓展信息。添加的信息可能会很大并导致显示杂乱无章，当前包括:CPU和numa拓扑
+	   信息.
 
        -b, --branch-stack
            Use the addresses of sampled taken branches instead of the instruction
@@ -435,6 +448,7 @@ OPTIONS
            (i.e. time string is x.y,) then analysis goes to end of file. Multiple ranges
            can be separated by spaces, which requires the argument to be quoted e.g.
            --time "1234.567,1234.789 1235,"
+	   只分析时间窗范围内的采样
 
                Also support time percent with multiple time ranges. Time string is
                'a%/n,b%/m,...' or 'a%-b%,c%-%d,...'.
@@ -458,6 +472,7 @@ OPTIONS
 
        --switch-on EVENT_NAME
            Only consider events after this event is found.
+	   分析发生事件之后的统计事件
 
                This may be interesting to measure a workload only after some initialization
                phase is over, i.e. insert a perf probe at that point and then using this
@@ -472,6 +487,8 @@ OPTIONS
            the --group mode and if there is only one event besides the off/on ones, go
            straight to the histogram browser, just like perf report with no events
            explicitely specified does.
+
+TODO:...
 
        --itrace
            Options for decoding instruction tracing data. The options are:
