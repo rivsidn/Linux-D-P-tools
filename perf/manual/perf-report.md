@@ -488,8 +488,6 @@ OPTIONS
            straight to the histogram browser, just like perf report with no events
            explicitely specified does.
 
-TODO:...
-
        --itrace
            Options for decoding instruction tracing data. The options are:
 
@@ -549,6 +547,7 @@ TODO:...
 
        --socket-filter
            Only report the samples on the processor socket that match with this filter
+	   只上报该处理器socket的事件
 
        --samples=N
            Save N individual samples for each histogram entry to show context in perf
@@ -574,14 +573,17 @@ TODO:...
 
        --ns
            Show time stamps in nanoseconds.
+	   纳秒为单位显示事件戳
 
        --stats
            Display overall events statistics without any further processing. (like the
            one at the end of the perf report -D command)
+	   显示总体的事件统计，不做进一步处理
 
        --tasks
            Display monitored tasks stored in perf data. Displaying pid/tid/ppid plus the
            command string aligned to distinguish parent and child tasks.
+	   显示perf 数据中监听的进程信息
 
        --percent-type
            Set annotation percent type from following choices: global-period,

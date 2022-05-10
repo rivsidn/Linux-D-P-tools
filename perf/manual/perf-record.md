@@ -3,9 +3,12 @@ PERF-RECORD(1)                         perf Manual                        PERF-R
 
 NAME
        perf-record - Run a command and record its profile into perf.data
+                     运行命令，将信息搜集到perf.data 中
 
 SYNOPSIS
+       命令没有参数的写法
        perf record [-e <EVENT> | --event=EVENT] [-a] <command>
+       命令带参数的写法
        perf record [-e <EVENT> | --event=EVENT] [-a] — <command> [<options>]
 
 DESCRIPTION
@@ -13,6 +16,7 @@ DESCRIPTION
        into perf.data - without displaying anything.
 
        This file can then be inspected later on, using perf report.
+       搜集信息，搜集信息之后可以通过perf report 查看.
 
 OPTIONS
        <command>...
@@ -20,8 +24,10 @@ OPTIONS
 
        -e, --event=
            Select the PMU event. Selection can be:
+	   指定一个PMU事件，事件可以为:
 
            •   a symbolic event name (use perf list to list all events)
+               一个符号事件名(通过perf list显示所有事件)
 
            •   a raw PMU event (eventsel+umask) in the form of rNNN where NNN is a
                hexadecimal event descriptor.
@@ -46,10 +52,13 @@ OPTIONS
                    These params can be used to overload default config values per event.
                    Here are some common parameters:
                    - 'period': Set event sampling period
+		               设置事件采样间隔
                    - 'freq': Set event sampling frequency
+		             设置事件采样频率
                    - 'time': Disable/enable time stamping. Acceptable values are 1 for
                              enabling time stamping. 0 for disabling time stamping.
                              The default is 1.
+			     禁止/使能时间采样
                    - 'call-graph': Disable/enable callgraph. Acceptable str are "fp" for
                                   FP mode, "dwarf" for DWARF mode, "lbr" for LBR mode and
                                   "no" for disable callgraph.
@@ -166,6 +175,7 @@ OPTIONS
            selector (-e) which selects tracepoint event(s). It adds a filter expression
            common_pid != $PERFPID to filters. If other --filter exists, the new filter
            expression will be combined with them by &&.
+	   不追踪perf 发出的事件
 
        -a, --all-cpus
            System-wide collection from all CPUs (default if no target is specified).
@@ -188,9 +198,11 @@ OPTIONS
 
        -c, --count=
            Event period to sample.
+	   事件采样时间间隔
 
        -o, --output=
            Output file name.
+	   输出文件名
 
        -i, --no-inherit
            Child tasks do not inherit counters.
@@ -225,6 +237,7 @@ OPTIONS
                (DWARF's CFI - Call Frame Information) or "lbr"
                (Hardware Last Branch Record facility) as the method to collect
                the information used to show the call graphs.
+	       允许指定"fp"、"dwarf"、"lbr" 方法搜集调用栈信息
 
                In some systems, where binaries are build with gcc
                --fomit-frame-pointer, using the "fp" method will produce bogus
@@ -324,34 +337,46 @@ OPTIONS
            enabling filters. The following filters are defined:
 
            •   any: any type of branches
+	            任意类型的分支
 
            •   any_call: any function call or system call
+	                 函数调用或者系统调用
 
            •   any_ret: any function return or system call return
+	                函数返回或者系统调用返回
 
            •   ind_call: any indirect branch
+	                 任意间接分支
 
            •   call: direct calls, including far (to/from kernel) calls
+	             直接调用
 
            •   u: only when the branch target is at the user level
+	          分支目标在用户态
 
            •   k: only when the branch target is in the kernel
+	          分支目标在内核态
 
            •   hv: only when the target is at the hypervisor level
+	           分支目标在虚拟机管理器层
 
            •   in_tx: only when the target is in a hardware transaction
+	              目标处于硬件事务中时
 
            •   no_tx: only when the target is not in a hardware transaction
+	              目标没处于硬件事务中
 
            •   abort_tx: only when the target is a hardware transaction abort
 
            •   cond: conditional branches
+	             条件分支
 
            •   save_type: save branch type during sampling in case binary is not
                available later
 
            The option requires at least one branch type among any, any_call, any_ret,
-           ind_call, cond. The privilege levels may be omitted, in which case, the
+           ind_call, cond.
+	   The privilege levels may be omitted, in which case, the
            privilege levels of the associated event are applied to the branch filter.
            Both kernel (k) and hypervisor (hv) privilege levels are subject to
            permissions. When sampling on multiple events, branch stack sampling is
@@ -377,6 +402,7 @@ OPTIONS
            overrides that and uses per-thread mmaps. A side-effect of that is that
            inheritance is automatically disabled. --per-thread is ignored with a warning
            if combined with -a or -C options.
+	   使用线程mmaps.
 
        -D, --delay=
            After starting the program, wait msecs before measuring. This is useful to
@@ -443,9 +469,9 @@ OPTIONS
 
        --affinity=mode
            Set affinity mask of trace reading thread according to the policy defined by
-           mode value: node - thread affinity mask is set to NUMA node cpu mask of the
-           processed mmap buffer cpu - thread affinity mask is set to cpu of the
-           processed mmap buffer
+           mode value:
+	   	node - thread affinity mask is set to NUMA node cpu mask of the processed mmap buffer
+                cpu - thread affinity mask is set to cpu of the processed mmap buffer
 
        --mmap-flush=number
            Specify minimal number of bytes that is extracted from mmap data pages and

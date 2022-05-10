@@ -14,7 +14,7 @@ I_yuchao@yuchao:~/Documents/github/linux-4.4.155/tools/perf/Documentation$ la -l
 -rw-r--r-- 1 yuchao yuchao   447 11月 16 10:19 jit-interface.txt
 -rw-r--r-- 1 yuchao yuchao  2306 11月 16 10:19 perf-annotate.txt
 -rw-r--r-- 1 yuchao yuchao   475 11月 16 10:19 perf-archive.txt
--rw-r--r-- 1 yuchao yuchao  4249 11月 16 10:19 perf-bench.txt
+-rw-r--r-- 1 yuchao yuchao  4249 11月 16 10:19 perf-bench.txt			//TODO
 -rw-r--r-- 1 yuchao yuchao  2073 11月 16 10:19 perf-buildid-cache.txt
 -rw-r--r-- 1 yuchao yuchao   831 11月 16 10:19 perf-buildid-list.txt
 -rw-r--r-- 1 yuchao yuchao   807 11月 16 10:19 perf-data.txt
@@ -41,4 +41,17 @@ I_yuchao@yuchao:~/Documents/github/linux-4.4.155/tools/perf/Documentation$ la -l
 -rw-r--r-- 1 yuchao yuchao  4817 11月 16 10:19 perf-trace.txt
 -rw-r--r-- 1 yuchao yuchao  1152 11月 16 10:19 perf.txt
 ```
+
+```
+perf                perf-diff           perf-list           perf-script-perl
+perf-annotate       perf_event_open     perf-lock           perf-script-python
+perf-archive        perf-evlist         perf-mem            perf-stat
+perf-bench          perf-ftrace         perfmonctl          perf-test
+perf-buildid-cache  perf-help           perf-probe          perf-timechart
+perf-buildid-list   perf-inject         perf-record         perf-top
+perf-c2c[TODO]      perf-kallsyms       perf-report         perf-trace
+perf-config         perf-kmem           perf-sched          perf-version
+perf-data           perf-kvm            perf-script         
+```
+
 
