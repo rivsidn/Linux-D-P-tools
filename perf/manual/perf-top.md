@@ -39,6 +39,7 @@ OPTIONS
 
        -E <entries>, --entries=<entries>
            Display this many functions.
+	   指定显示的行号，只在--stdio模式的时候有效
 
        -f <count>, --count-filter=<count>
            Only display functions with more events than this.
@@ -49,6 +50,7 @@ OPTIONS
        -F <freq>, --freq=<freq>
            Profile at this frequency. Use max to use the currently maximum allowed
            frequency, i.e. the value in the kernel.perf_event_max_sample_rate sysctl.
+	   指定事件采样周期
 
        -i, --inherit
            Child tasks do not inherit counters.
@@ -112,7 +114,7 @@ OPTIONS
 
        -z, --zero
            Zero history across display updates.
-	   显示更新间清空历史记录
+	   更新间清空历史记录
 
        -s, --sort
            Sort by key(s): pid, comm, dso, symbol, parent, srcline, weight,
@@ -134,7 +136,7 @@ OPTIONS
 
        --show-total-period
            Show a column with the sum of periods.
-	   多显示period 一栏，应该是时间(具体单位是什么？)
+	   多显示period 一栏，单位应该是纳秒
 
        --dsos
            Only consider symbols in these dsos. This option will affect the percentage
@@ -161,7 +163,9 @@ OPTIONS
 
        -g
            Enables call-graph (stack chain/backtrace) recording.
-	   生成调用关系图记录
+	   生成调用关系图记录。
+	   使能该该选项之后，占用的CPU利用率之和超过了100%，此时是因为父函数显示的CPU利用率
+	   中已经包含了子函数的部分，所以就会导致此时CPU利用率之和大于100%。
 
        --call-graph [mode,type,min[,limit],order[,key][,branch]]
            Setup and enable call-graph (stack chain/backtrace) recording, implies -g.
@@ -180,6 +184,7 @@ OPTIONS
            specified depth will be ignored. This is a trade-off between information loss
            and faster processing especially for workloads that can have a very long
            callchain stack.
+	   设置调用链中的最大调用深度
 
                Default: /proc/sys/kernel/perf_event_max_stack when present, 127 otherwise.
 
@@ -216,6 +221,7 @@ OPTIONS
            Enable taken branch stack sampling. Any type of taken branch may be sampled.
            This is a shortcut for --branch-filter any. See --branch-filter for more
            infos.
+	   使能分支采样
 
        -j, --branch-filter
            Enable taken branch stack sampling. Each sample captures a series of
@@ -337,6 +343,7 @@ INTERACTIVE PROMPTING KEYS
            Quit.
 
        Pressing any unmapped key displays a menu, and prompts for input.
+       指定--stdio 模式的时候有效
 
 OVERHEAD CALCULATION
        The overhead can be shown in two columns as Children and Self when perf collects
