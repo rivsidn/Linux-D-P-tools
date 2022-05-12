@@ -7,12 +7,12 @@ NAME
 
 SYNOPSIS
        strace [-CdffhikqrtttTvVxxy] [-I n] [-b execve] [-e expr]... [-a column]
-              [-o file] [-s strsize] [-P path]... [-p pid]... { -p pid | [-D]
-              [-E var[=val]]... [-u username] command [args] }
+              [-o file] [-s strsize] [-P path]... [-p pid]...
+              { -p pid | [-D] [-E var[=val]]... [-u username] command [args] }
 
        strace -c [-df] [-I n] [-b execve] [-e expr]... [-O overhead] [-S sortby]
-              [-P path]... [-p pid]... { -p pid | [-D] [-E var[=val]]... [-u username]
-              command [args] }
+              [-P path]... [-p pid]...
+              { -p pid | [-D] [-E var[=val]]... [-u username] command [args] }
 
 DESCRIPTION
        In the simplest case strace runs the specified command until it exits.  It inter‐
@@ -20,6 +20,9 @@ DESCRIPTION
        which are received by a process.  The name of each system call, its arguments and
        its return value are printed on standard error or to the file specified with  the
        -o option.
+       最简单的情况是，追踪指定命令，直到命令执行完毕。strace 会截取并记录系统调用和进程
+       收到的信号。系统调用名称、参数以及返回值会输出到标准错误中，如果指定了-o选项会输出
+       到指定文件中。
 
        strace  is a useful diagnostic, instructional, and debugging tool.  System admin‐
        istrators, diagnosticians and trouble-shooters will find it invaluable for  solv‐
@@ -30,20 +33,24 @@ DESCRIPTION
        that  since  system  calls  and signals are events that happen at the user/kernel
        interface, a close examination of this boundary is very useful for bug isolation,
        sanity checking and attempting to capture race conditions.
+       strace是一个很有用的工具.
 
        Each  line  in the trace contains the system call name, followed by its arguments
        in parentheses and its return value.  An example from stracing the  command  "cat
        /dev/null" is:
+       每行追踪包含系统调用名、参数和返回值. 示例如下:
 
            open("/dev/null", O_RDONLY) = 3
 
        Errors  (typically  a  return value of -1) have the errno symbol and error string
        appended.
+       出错的时候会输出errno 和错误字符串信息.
 
            open("/foo/bar", O_RDONLY) = -1 ENOENT (No such file or directory)
 
        Signals are printed as signal symbol and decoded siginfo structure.   An  excerpt
        from stracing and interrupting the command "sleep 666" is:
+       接收到的信号会收到一个信号名和解码的siginfo 结构体.
 
            sigsuspend([] <unfinished ...>
            --- SIGINT {si_signo=SIGINT, si_code=SI_USER, si_pid=...} ---
@@ -53,6 +60,8 @@ DESCRIPTION
        a different thread/process then strace will try to preserve the  order  of  those
        events  and  mark the ongoing call as being unfinished.  When the call returns it
        will be marked as resumed.
+       当系统调用正在执行过程中被来自其他进程或线程的追踪信息打断了，strace 会尽量维持调
+       用顺序，并标识之前的调用为unfinished，当系统调用返回的时候会标识为resumed。
 
            [pid 28772] select(4, [3], NULL, NULL, NULL <unfinished ...>
            [pid 28779] clock_gettime(CLOCK_REALTIME, {1130322148, 939977000}) = 0
@@ -61,6 +70,8 @@ DESCRIPTION
        Interruption of a (restartable) system call by a  signal  delivery  is  processed
        differently  as kernel terminates the system call and also arranges its immediate
        reexecution after the signal handler completes.
+       被信号打断的系统调用显示略有不同，因为信号执行函数执行完毕之后，会继续处理原有的系统
+       调用.
 
            read(0, 0x7ffff72cf5cf, 1)              = ? ERESTARTSYS (To be restarted)
            --- SIGALRM ... ---
@@ -69,8 +80,11 @@ DESCRIPTION
 
        Arguments are printed in symbolic form with  passion.   This  example  shows  the
        shell performing ">>xyzzy" output redirection:
+       参数会以符号的形式输出:
 
            open("xyzzy", O_WRONLY|O_APPEND|O_CREAT, 0666) = 3
+
+TODO:
 
        Here,  the  third  argument of open is decoded by breaking down the flag argument
        into its three bitwise-OR constituents and printing the mode value  in  octal  by

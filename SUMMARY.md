@@ -13,6 +13,9 @@
     * [perf-report](perf/manual/perf-stat.md)
     * [perf-list](perf/manual/perf-list.md)
 
+## sysstat
+* [sysstat](sysstat/README.md)
+
 ## kpatch
 * [kpatch](kpatch/README.md)
   * [livepatch功能](kpatch/livepatch功能.md)
@@ -26,6 +29,8 @@
 
 ## manual
 * [manual](manual/README.md)
+  * [nice](nice.md)
+  * [renice](renice.md)
   * [strace](strace.md)
 
 ## misc
