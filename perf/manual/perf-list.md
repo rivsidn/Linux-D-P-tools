@@ -44,7 +44,7 @@ EVENT MODIFIERS
            u - user-space counting
 	       用户态统计
            k - kernel counting
-	       内核态统计
+	       统计内核态(如 cycles:k，就是只统计内核态CPU运行)
            h - hypervisor counting
 	       虚拟机管理程序统计
            I - non idle counting

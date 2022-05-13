@@ -6,7 +6,8 @@ NAME
                      运行命令，将信息搜集到perf.data 中
 
 SYNOPSIS
-       命令没有参数的写法
+       命令没有参数的写法。
+       注意，此处执行命令意思是在命令退出之前进行统计信息记录，并不是只搜集该命令的记录信息。
        perf record [-e <EVENT> | --event=EVENT] [-a] <command>
        命令带参数的写法
        perf record [-e <EVENT> | --event=EVENT] [-a] — <command> [<options>]
@@ -114,8 +115,7 @@ OPTIONS
 
        --filter=<filter>
            Event filter. This option should follow an event selector (-e) which selects
-           either tracepoint event(s) or a hardware trace PMU (e.g. Intel PT or
-           CoreSight).
+           either tracepoint event(s) or a hardware trace PMU (e.g. Intel PT or CoreSight).
 
            •   tracepoint filters
 
@@ -192,6 +192,7 @@ OPTIONS
 
        -r, --realtime=
            Collect data with this RT SCHED_FIFO priority.
+	   以实时进程优先级统计信息
 
        --no-buffering
            Collect data without buffering.
@@ -206,6 +207,7 @@ OPTIONS
 
        -i, --no-inherit
            Child tasks do not inherit counters.
+	   TOOD: 这个的用处？
 
        -F, --freq=
            Profile at this frequency. Use max to use the currently maximum allowed
@@ -225,6 +227,7 @@ OPTIONS
        --group
            Put all events in a single event group. This precedes the --event option and
            remains only for backward compatibility. See --event.
+	   仅仅是向后兼容.
 
        -g
            Enables call-graph (stack chain/backtrace) recording.
@@ -272,6 +275,7 @@ OPTIONS
        -T, --timestamp
            Record the sample timestamps. Use it with perf report -D to see the
            timestamps, for instance.
+	   记录时间戳信息，通过 perf report -D 查看时间戳.
 
        -P, --period
            Record the sample period.
@@ -283,8 +287,7 @@ OPTIONS
            Don’t sample.
 
        -R, --raw-samples
-           Collect raw sample records from all opened counters (default for tracepoint
-           counters).
+           Collect raw sample records from all opened counters (default for tracepoint counters).
 
        -C, --cpu
            Collect samples only on the list of CPUs provided. Multiple CPUs can be
@@ -302,6 +305,8 @@ OPTIONS
            because the only key available in this case is the pathname. You can also set
            the "record.build-id" config variable to 'skip to have this behaviour
            permanently.
+	   不在perf.data 中保存二进制数据，这步通常会在最后进行，占用很长一段时间.
+	   副作用就是如果保存之后二进制文件改变了，可能会导致解析的符号不对.
 
        -N, --no-buildid-cache
            Do not update the buildid cache. This saves some overhead in situations where
@@ -422,6 +427,7 @@ OPTIONS
 
        --running-time
            Record running and enabled time for read events (:S)
+	   TODO: 没理解?
 
        -k, --clockid
            Sets the clock id to use for the various time fields in the perf_event_type
@@ -435,6 +441,7 @@ OPTIONS
            specified in a string that follows this option: e: take one last snapshot on
            exit; guarantees that there is at least one snapshot in the output file;
            <size>: if the PMU supports this, specify the desired snapshot size.
+	   TODO: AUX 是什么?
 
        In Snapshot Mode trace data is captured only when signal SIGUSR2 is received and
        on exit if the above e option is given.
@@ -546,6 +553,7 @@ OPTIONS
        --dry-run
            Parse options then exit. --dry-run can be used to detect errors in cmdline
            options.
+	   尝试运行然后退出.
 
        perf record --dry-run -e can act as a BPF script compiler if llvm.dump-obj in
        config file is set to true.
