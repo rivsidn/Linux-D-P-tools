@@ -30,6 +30,7 @@ DESCRIPTION
        default, the standard system activity daily data file.  It is  also  possible  to
        enter  -1,  -2  etc.  as an argument to sar to display data of that days ago. For
        example, -1 will point at the standard system activity file of yesterday.
+       sar命令用于输出之前保存在文件中的内容.
 
        Standard system activity daily data files are named  saDD  or  saYYYYMMDD,  where
        YYYY stands for the current year, MM for the current month and DD for the current
@@ -43,6 +44,7 @@ DESCRIPTION
        directory  by  default.  Yet  it is possible to specify an alternate location for
        them: If a directory (instead of a plain file) is used with options -f or -o then
        it will be considered as the directory containing the data files.
+       可以通过-f 或 -o 指定系统活动日志保存的目录.
 
        Without  the  -P flag, the sar command reports system-wide (global among all pro‐
        cessors) statistics, which are calculated as averages  for  values  expressed  as
@@ -50,10 +52,12 @@ DESCRIPTION
        reports activity which relates to the specified processor or  processors.  If  -P
        ALL  is  given,  the sar command reports statistics for each individual processor
        and global statistics among all processors.
+       -P 参数用于指定统计的CPU.
 
        You can select information about specific  system  activities  using  flags.  Not
        specifying  any  flags selects only CPU activity.  Specifying the -A flag selects
        all possible activities.
+       可以通过flags选定特定的系统信息，没指定的时候默认显示CPU活动，-A 选中所有可能的活动.
 
        The default version of the sar command (CPU utilization report) might be  one  of
        the  first  facilities  the  user  runs  to  begin system activity investigation,
@@ -72,6 +76,7 @@ DESCRIPTION
        intervals. If the count parameter is not set, all the records saved in  the  file
        will  be  selected.   Collection of data in this manner is useful to characterize
        system usage over a period of time and determine peak usage hours.
+       将所有的信息储存到文件中，之后可以通过sar命令输出.
 
        Note:     The sar command only reports on local activities.
 

@@ -106,6 +106,7 @@ OPTIONS
        -x SEP, --field-separator SEP
            print counts using a CSV-style output to make it easy to import directly into
            spreadsheets. Columns are separated by the string specified in SEP.
+	   以其他格式输出信息，指定输出的间隔符.
 
        -G name, --cgroup name
            monitor only in the container (cgroup) called "name". This option is
@@ -171,6 +172,8 @@ OPTIONS
        -D msecs, --delay msecs
            After starting the program, wait msecs before measuring. This is useful to
            filter out the startup phase of the program, which is often very different.
+	   启动程序之后，等待一段时间才开始统计，该选项对于过滤掉程序开始的一段时间很
+	   有效果。
 
        -T, --transaction
            Print statistics of transactional execution if supported.
@@ -190,24 +193,28 @@ STAT REPORT
 
        --per-socket
            Aggregate counts per processor socket for system-wide mode measurements.
+	   系统范围内的数据，针对每个处理器聚合显示
 
        --per-core
            Aggregate counts per physical processor for system-wide mode measurements.
+	   系统范围内的数据，针对每个物理处理器聚合显示
 
        -M, --metrics
-           Print metrics or metricgroups specified in a comma separated list. For a
+           Print metrics(指标) or metricgroups(指标组) specified in a comma separated list. For a
            group all metrics from the group are added. The events from the metrics are
            automatically measured. See perf list output for the possble metrics and
            metricgroups.
 
        -A, --no-aggr
            Do not aggregate counts across all monitored CPUs.
+	   不聚合显示统计信息.
 
        --topdown
            Print top down level 1 metrics if supported by the CPU. This allows to
            determine bottle necks in the CPU pipeline for CPU bound workloads, by
            breaking the cycles consumed down into frontend bound, backend bound, bad
            speculation and retiring.
+	   如果CPU支持，输出top down level 1 指标.
 
        Frontend bound means that the CPU cannot fetch and decode instructions fast
        enough. Backend bound means that computation or memory access is the bottle neck.

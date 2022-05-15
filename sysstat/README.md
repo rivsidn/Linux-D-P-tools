@@ -11,6 +11,18 @@ systemctl enable sysstat
 
 
 
+## F&Q
+
+* 如果`sadc` 统计的时间间隔为 10s，但是`sar` 显示的时间间隔 为1s？中间的数据从哪里来？
+* 
+
+
+
+## TODO
+
+* cron
+
+
 
 
 

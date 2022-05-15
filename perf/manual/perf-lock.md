@@ -1,7 +1,9 @@
+```
 PERF-LOCK(1)                           perf Manual                          PERF-LOCK(1)
 
 NAME
        perf-lock - Analyze lock events
+                   分析锁事件
 
 SYNOPSIS
        perf lock {record|report|script|info}
@@ -23,6 +25,7 @@ DESCRIPTION
            of lock instances.
 
 COMMON OPTIONS
+通用选项
        -i, --input=<file>
            Input file name. (default: perf.data unless stdin is a fifo)
 
@@ -51,3 +54,4 @@ SEE ALSO
        perf(1)
 
 perf                                   03/29/2022                           PERF-LOCK(1)
+```

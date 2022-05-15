@@ -306,6 +306,18 @@ OPTIONS
            straight to the histogram browser, just like perf top with no events
            explicitely specified does.
 
+INTERACTIVE PROMPTING KEYS(default)
+       [f]
+           暂停/开启事件统计
+       [a]
+           注释当前符号表，可以查看汇编等信息
+       [P]
+           将当前信息保存下来
+       [z]
+           不显示统计信息，只显示当前刷新时间间隔内的信息
+
+       交互过程中可以通过输出h/?/F1 查看帮助信息，默认模式下的交互命令.
+
 INTERACTIVE PROMPTING KEYS
        [d]
            Display refresh delay.

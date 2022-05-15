@@ -5,6 +5,7 @@
 ## perf
 * [perf](perf/README.md)
   * [perf安装](perf/perf安装.md)
+  * [用户态进程性能统计](perf/用户态进程性能统计.md)
   * [perf manual](perf/manual/README.md)
     * [perf](perf/manual/perf.md)
     * [perf-stat](perf/manual/perf-stat.md)
@@ -29,9 +30,13 @@
 
 ## manual
 * [manual](manual/README.md)
+  * [chrt](chrt.md)
   * [nice](nice.md)
   * [renice](renice.md)
+  * [sched](sched.md)
+  * [sched\_setscheduler](sched_setscheduler.md)
   * [strace](strace.md)
+  * [taskset](taskset.md)
 
 ## misc
 * [misc](misc/README.md)
