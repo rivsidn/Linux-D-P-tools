@@ -37,6 +37,7 @@
   * [sched\_setscheduler](sched_setscheduler.md)
   * [strace](strace.md)
   * [taskset](taskset.md)
+  * [top](top.md)
 
 ## misc
 * [misc](misc/README.md)
