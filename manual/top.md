@@ -132,6 +132,7 @@ OVERVIEW
        terminated  with  the  <Enter> key.  Those keys, or their aliases, can be used to
        retrieve previous input lines which can then be edited and re-input.   And  there
        are four additional keys available with line oriented input.
+       当遇到提示，输入<Enter> 结束的行时，上下箭头键有特殊意义.
               key      special-significance
               Up       recall older strings for re-editing
               Down     recall newer strings or erase entire line
@@ -214,20 +215,32 @@ OVERVIEW
        scalable columns and discussed under topic `3a. DESCRIPTIONS of Fields'.
 
           %MEM - simply RES divided by total physical memory
+	         占有的物理内存比例
           CODE - the `pgms' portion of quadrant 3
+	         象限3 内的'pgms' 部分
           DATA - the entire quadrant 1 portion of VIRT plus all
                  explicit mmap file-backed pages of quadrant 3
+		 整个象限1 的虚拟内存部分加上象限3 中的mmap 部分
           RES  - anything occupying physical memory which, beginning with
                  Linux-4.5, is the sum of the following three fields:
+		 任何占用物理物理内存的东西.
                  RSan - quadrant 1 pages, which include any
                         former quadrant 3 pages if modified
+			象限1 中的页面
                  RSfd - quadrant 3 and quadrant 4 pages
+		        象限3和4中的页面
                  RSsh - quadrant 2 pages
+		        象限2中的页面
           RSlk - subset of RES which cannot be swapped out (any quadrant)
+	         RES中不能换出的子集
           SHR  - subset of RES (excludes 1, includes all 2 & 4, some 3)
+	         RES中的子集，不包括1 ，包括2和4，3的一部分
           SWAP - potentially any quadrant except 4
+	         可能存在于除了4的任何象限中
           USED - simply the sum of RES and SWAP
+	         RES和SWAP 之和
           VIRT - everything in-use and/or reserved (all quadrants)
+	         所有象限中内容
 
        Note: Even though program images and shared libraries are considered private to a
        process, they will be accounted for as shared (SHR) by the kernel.
@@ -335,7 +348,7 @@ OVERVIEW
             time  mode  is  On, each process is listed with the cpu time that it and its
             dead children have used.  See the `S'  interactive  command  for  additional
             information regarding this mode.
-	    使能时间累计模式.
+	    时间累计模式开关
 
        -u | -U  :User-filter-mode as:  -u | -U number or name
             Display only processes with a user id or user name matching that given.  The
@@ -362,6 +375,7 @@ OVERVIEW
             With an argument,  output  width  can  only  be  decreased,  not  increased.
             Whether  using  environment  variables  or  an argument with -w, when not in
             Batch mode actual terminal dimensions can never be exceeded.
+	    不论使用何种方式指定宽度，如果不是在批处理模式下，不会超过实际宽度.
 
             Note: Without the use of this command-line option, output  width  is  always
             based on the terminal at which top was invoked whether or not in Batch mode.
@@ -370,6 +384,7 @@ OVERVIEW
        Each of the following three areas are individually controlled through one or more
        interactive commands.  See topic 4b. SUMMARY AREA Commands for additional  infor‐
        mation regarding these provisions.
+       下边的信息可以由一个或多个交互命令独立控制.
 
    2a. UPTIME and LOAD Averages(启动时间和平均负载)
        This portion consists of a single line containing:
@@ -419,6 +434,10 @@ OVERVIEW
                       a    b     c    d
            %Cpu(s):  75.0/25.0  100[ ...
 
+		     a 用户态
+		     b 内核态
+		     c 两者之和
+		     d 两者之和的图形化显示
        Where: a) is the combined us and ni percentage; b) is the sy  percentage;  c)  is
        the  total;  and  d)  is  one of two visual graphs of those representations.  See
        topic 4b. SUMMARY AREA Commands and the `t' command for additional information on
@@ -441,6 +460,8 @@ OVERVIEW
        starting new applications, without swapping.  Unlike the free field, it  attempts
        to  account for readily reclaimable page cache and memory slabs.  It is available
        on kernels 3.14, emulated on kernels 2.6.27+, otherwise the same as free.
+       avail 是可以用于启动新进程(无需交换)的内存大小，不像是free 字段，avail 会考虑到可
+       回收的内存缓存和内存slab. 
 
        In the alternate memory display modes, two abbreviated summary  lines  are  shown
        consisting of these elements:
@@ -448,6 +469,9 @@ OVERVIEW
            GiB Mem : 18.7/15.738   [ ...
            GiB Swap:  0.0/7.999    [ ...
 
+	   a 是当前正在使用的
+	   b 是总量
+	   c 是图形化显示
        Where: a) is the percentage used; b) is the total available; and c) is one of two
        visual graphs of those representations.
 
@@ -483,6 +507,7 @@ OVERVIEW
        through  PiB.   That  scaling  is  influenced  via the `e' interactive command or
        established for startup through a build option.
 
+TODO:
         1. %CPU  --  CPU Usage(CPU利用率)
            The task's share of the elapsed  CPU  time  since  the  last  screen  update,
            expressed as a percentage of total CPU time.
@@ -1127,11 +1152,12 @@ OVERVIEW
               fields are never decreased by top.  To narrow  them  you  must  specify  a
               smaller number or restore the defaults.
 
-          Y  :Inspect-Other-Output(TODO: 这个模式怎么用？)
+          Y  :Inspect-Other-Output
               After issuing the `Y' interactive command, you will be prompted for a tar‐
               get PID.  Typing a value or accepting the default results  in  a  separate
               screen.   That screen can be used to view a variety of files or piped com‐
               mand output while the normal top iterative display is paused.
+	      可以用于在执行top 命令的时候查看其他文件的输出。
 
               Note: This interactive command is  only  fully  realized  when  supporting
               entries have been manually added to the end of the top configuration file.
@@ -1181,7 +1207,7 @@ OVERVIEW
               in alternate-display mode.
 	      平均负载\启动时间显示开关.
 
-          t  :Task/Cpu-States toggle
+          t  :Task/Cpu-States toggle(进程/CPU状态开关)
               This command affects from 2 to many summary area lines, depending  on  the
               state  of  the  `1',  `2' or `3' command toggles and whether or not top is
               running under true SMP.
@@ -1192,15 +1218,15 @@ OVERVIEW
 
               This command serves as a 4-way toggle, cycling through these modes:
                   1. detailed percentages by category
-                  2. abbreviated user/system and total % + bar graph
-                  3. abbreviated user/system and total % + block graph
+                  2. abbreviated user/system and total % + bar graph(图形显示状态)
+                  3. abbreviated user/system and total % + block graph(图形显示状态)
                   4. turn off task and cpu states display
 
               When operating in either of the graphic modes, the  display  becomes  much
               more  meaningful  when  individual  CPUs or NUMA nodes are also displayed.
               See the the `1', `2' and `3' commands below for additional information.
 
-          m  :Memory/Swap-Usage toggle
+          m  :Memory/Swap-Usage toggle(内存/交换文件使用率切换开关)
               This command affects the two summary area lines dealing with physical  and
               virtual memory.
 
@@ -1821,26 +1847,27 @@ OVERVIEW
        Such highlighting will be restored when a window is no longer subject to  filter‐
        ing.   See  the `x' interactive command for additional information on sort column
        highlighting.
-TODO:...
+
 6 FILES
    6a. SYSTEM Configuration File(系统配置文件)
        The presence of this file will influence which version  of  the  help  screen  is
        shown  to  an ordinary user.  More importantly, it will limit what ordinary users
        are allowed to do when top is running.  They will not be able to issue  the  fol‐
        lowing commands.
-           k        Kill a task
-           r        Renice a task
+           k        Kill a task(杀死进程)
+           r        Renice a task(修改进程优先级)
            d or s   Change delay/sleep interval
 
        The  system  configuration  file  is not created by top.  Rather, you create this
        file manually and place it in the /etc directory.  Its name must be  `toprc'  and
        must have no leading `.' (period).  It must have only two lines.
+       必须只有两行
 
        Here is an example of the contents of /etc/toprc:
            s        # line 1: secure mode switch
            5.0      # line 2: delay interval in seconds
 
-   6b. PERSONAL Configuration File
+   6b. PERSONAL Configuration File(本地配置文件)
        This file is written as `$HOME/.your-name-4-top' + `rc'.  Use the `W' interactive
        command to create it or update it.
 
@@ -1876,6 +1903,7 @@ TODO:...
        Those  Inspect  entries beginning with a `#' character are ignored, regardless of
        content.  Otherwise they consist of the following 3 elements, each of which  must
        be separated by a tab character (thus 2 `\t' total):
+       有下边三部分组成，中间通过tab 分割:
 
          .type:  literal `file' or `pipe'
          .name:  selection shown on the Inspect screen
