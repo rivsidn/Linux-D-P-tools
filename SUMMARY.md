@@ -32,6 +32,7 @@
 * [manual](manual/README.md)
   * [chrt](chrt.md)
   * [nice](nice.md)
+  * [ps](ps.md)
   * [renice](renice.md)
   * [sched](sched.md)
   * [sched\_setscheduler](sched_setscheduler.md)
