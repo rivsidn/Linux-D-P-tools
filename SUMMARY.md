@@ -32,6 +32,7 @@
 * [manual](manual/README.md)
   * [chrt](chrt.md)
   * [nice](nice.md)
+  * [pgrep](pgrep.md)
   * [ps](ps.md)
   * [renice](renice.md)
   * [sched](sched.md)

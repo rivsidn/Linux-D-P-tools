@@ -2,6 +2,7 @@ PERF-BUILDID-CACHE(1)                  perf Manual                 PERF-BUILDID-
 
 NAME
        perf-buildid-cache - Manage build-id cache.
+                            管理build-id 缓存信息
 
 SYNOPSIS
        perf buildid-cache <options>
@@ -12,13 +13,16 @@ DESCRIPTION
        space used by the cache, etc. This also scans the target binary for SDT
        (Statically Defined Tracing) and record it along with the buildid-cache, which
        will be used by perf-probe. For more details, see perf-probe(1).
+       管理缓存信息，可以用于将文件从缓存中添加、删除、更新、清除等。
 
 OPTIONS
        -a, --add=
            Add specified file to the cache.
+	   添加特定文件到缓存中.
 
        -f, --force
            Don’t complain, do it.
+	   不要抱怨，干就完了.
 
        -k, --kcore
            Add specified kcore file to the cache. For the current host that is
@@ -35,6 +39,7 @@ OPTIONS
        -r, --remove=
            Remove a cached binary which has same build-id of specified file from the
            cache.
+	   删除文件
 
        -p, --purge=
            Purge all cached binaries including older caches which have specified path
@@ -42,6 +47,7 @@ OPTIONS
 
        -P, --purge-all
            Purge all cached binaries. This will flush out entire cache.
+	   清楚所有缓存二进制文件，该命令会刷新整个缓存.
 
        -M, --missing=
            List missing build ids in the cache for the specified file.

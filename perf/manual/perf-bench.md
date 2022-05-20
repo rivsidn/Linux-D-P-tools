@@ -2,6 +2,7 @@ PERF-BENCH(1)                          perf Manual                         PERF-
 
 NAME
        perf-bench - General framework for benchmark suites
+                    基准测试组建的通用框架
 
 SYNOPSIS
        perf bench [<common options>] <subsystem> <suite> [<options>]
@@ -12,9 +13,11 @@ DESCRIPTION
 COMMON OPTIONS
        -r, --repeat=
            Specify amount of times to repeat the run (default 10).
+	   指定循环执行的次数
 
        -f, --format=
            Specify format style. Current available format styles are:
+	   指定输出格式
 
        default
            Default style. This is mainly for human reading.
@@ -38,12 +41,15 @@ COMMON OPTIONS
 SUBSYSTEM
        sched
            Scheduler and IPC mechanisms.
+	   调度和IPC机制
 
        mem
            Memory access performance.
+	   内存访问性能
 
        numa
            NUMA scheduling and MM benchmarks.
+	   numa调度和内存基准
 
        futex
            Futex stressing benchmarks.
@@ -58,6 +64,7 @@ SUBSYSTEM
        messaging
            Suite for evaluating performance of scheduler and IPC mechanisms. Based on
            hackbench by Rusty Russell.
+	   用于评估调度器和IPC机制的组建.
 
        Options of messaging
            -p, --pipe
@@ -153,6 +160,7 @@ SUBSYSTEM
    SUITES FOR numa
        mem
            Suite for evaluating NUMA workloads.
+	   NUMA工作负载测试组件
 
    SUITES FOR futex
        hash

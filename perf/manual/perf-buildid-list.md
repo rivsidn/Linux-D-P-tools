@@ -2,6 +2,7 @@ PERF-BUILDID-LIST(1)                   perf Manual                  PERF-BUILDID
 
 NAME
        perf-buildid-list - List the buildids in a perf.data file
+                           列出perf.data 文件中的buildids 信息
 
 SYNOPSIS
        perf buildid-list <options>
@@ -16,15 +17,19 @@ DESCRIPTION
 OPTIONS
        -H, --with-hits
            Show only DSOs with hits.
+	   只显示命中的DSO.
 
        -i, --input=
            Input file name. (default: perf.data unless stdin is a fifo)
+	   输入文件名
 
        -f, --force
            Don’t do ownership validation.
+	   不进行所有权认证
 
        -k, --kernel
            Show running kernel build id.
+	   显示内核的build id
 
        -v, --verbose
            Be more verbose.
