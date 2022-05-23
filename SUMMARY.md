@@ -31,6 +31,7 @@
 ## manual
 * [manual](manual/README.md)
   * [chrt](chrt.md)
+  * [netstat](netstat.md)
   * [nice](nice.md)
   * [pgrep](pgrep.md)
   * [ps](ps.md)
