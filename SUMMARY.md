@@ -38,6 +38,7 @@
   * [renice](renice.md)
   * [sched](sched.md)
   * [sched\_setscheduler](sched_setscheduler.md)
+  * [ss](ss.md)
   * [strace](strace.md)
   * [taskset](taskset.md)
   * [top](top.md)

@@ -6,6 +6,7 @@ linux 调试和性能工具
 
 ## TODO
 
+* cpupower frequency-set -g performance 命令使用？
 * 真实用户ID，有效用户ID
 * 真实组ID，有效组ID
 * 会话组ID

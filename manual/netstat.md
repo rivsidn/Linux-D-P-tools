@@ -6,39 +6,52 @@ NAME
                    masquerade connections, and multicast memberships
 		   输出网络连接，路由表，接口统计，伪装链接，多播等信息
 
+
 SYNOPSIS
+       此处的语法已经列出了命令支持的子命令以及子命令支持的选项，查阅选项的描述即可以明确
+       命令如何使用。
+
+       输出网络链接信息
        netstat [address_family_options] [--tcp|-t] [--udp|-u] [--udplite|-U] [--sctp|-S]
        [--raw|-w]  [--l2cap|-2] [--rfcomm|-f] [--listening|-l] [--all|-a] [--numeric|-n]
        [--numeric-hosts]     [--numeric-ports]     [--numeric-users]     [--symbolic|-N]
-       [--extend|-e[--extend|-e]] [--timers|-o] [--program|-p] [--verbose|-v] [--contin‐
-       uous|-c] [--wide|-W]
+       [--extend|-e[--extend|-e]] [--timers|-o] [--program|-p] [--verbose|-v]
+       [--continuous|-c] [--wide|-W]
 
-       netstat {--route|-r} [address_family_options] [--extend|-e[--extend|-e]]  [--ver‐
-       bose|-v]  [--numeric|-n]  [--numeric-hosts]  [--numeric-ports]  [--numeric-users]
-       [--continuous|-c]
+       输出路由信息
+       netstat {--route|-r} [address_family_options] [--extend|-e[--extend|-e]]
+       [--verbose|-v]  [--numeric|-n]  [--numeric-hosts]  [--numeric-ports]
+       [--numeric-users] [--continuous|-c]
 
+       输出接口信息
        netstat {--interfaces|-i}  [--all|-a]  [--extend|-e[--extend|-e]]  [--verbose|-v]
-       [--program|-p]  [--numeric|-n]  [--numeric-hosts]  [--numeric-ports]  [--numeric-
-       users] [--continuous|-c]
+       [--program|-p]  [--numeric|-n]  [--numeric-hosts]  [--numeric-ports]
+       [--numericusers] [--continuous|-c]
 
+       输出多播组信息
        netstat   {--groups|-g}   [--numeric|-n]   [--numeric-hosts]    [--numeric-ports]
        [--numeric-users] [--continuous|-c]
 
+       输出伪装链接信息
        netstat    {--masquerade|-M}   [--extend|-e]   [--numeric|-n]   [--numeric-hosts]
        [--numeric-ports] [--numeric-users] [--continuous|-c]
 
+       输出统计信息
        netstat  {--statistics|-s}  [--tcp|-t]  [--udp|-u]   [--udplite|-U]   [--sctp|-S]
        [--raw|-w]
 
+       输出当前版本信息
        netstat {--version|-V}
 
+       输出帮助信息
        netstat {--help|-h}
 
        address_family_options:
        地主族选项:
 
-       [-4|--inet]  [-6|--inet6]  [--protocol={inet,inet6,unix,ipx,ax25,netrom,ddp,blue‐
-       tooth, ...  }  ]  [--unix|-x]  [--inet|--ip|--tcpip]  [--ax25]  [--x25]  [--rose]
+       [-4|--inet]  [-6|--inet6]
+       [--protocol={inet,inet6,unix,ipx,ax25,netrom,ddp,bluetooth, ...  }  ]
+       [--unix|-x]  [--inet|--ip|--tcpip]  [--ax25]  [--x25]  [--rose]
        [--ash] [--bluetooth] [--ipx] [--netrom] [--ddp|--appletalk] [--econet|--ec]
 
 NOTES
@@ -72,6 +85,7 @@ DESCRIPTION(描述)
 
    --statistics, -s
        Display summary statistics for each protocol.
+       显示统计信息
 
 OPTIONS
    --verbose, -v
@@ -85,18 +99,22 @@ OPTIONS
    --numeric, -n
        Show  numerical  addresses  instead of trying to determine symbolic host, port or
        user names.
+       显示IP地址而不是符号信息
 
    --numeric-hosts
        shows numerical host addresses but does not affect the resolution of port or user
        names.
+       IP地址不通过符号信息
 
    --numeric-ports
        shows  numerical  port numbers but does not affect the resolution of host or user
        names.
+       端口号不通过符号显示
 
    --numeric-users
        shows numerical user IDs but does not affect  the  resolution  of  host  or  port
        names.
+       用户不通过符号显示
 
    --protocol=family, -A
        Specifies  the address families (perhaps better described as low level protocols)
@@ -104,6 +122,7 @@ OPTIONS
        address  family  keywords like inet, inet6, unix, ipx, ax25, netrom, econet, ddp,
        and bluetooth.  This has the same effect  as  using  the  --inet|-4,  --inet6|-6,
        --unix|-x, --ipx, --ax25, --netrom, --ddp, and --bluetooth options.
+       指定底层协议
 
        The  address  family inet (Iv4) includes raw, udp, udplite and tcp protocol sock‐
        ets.
@@ -117,7 +136,7 @@ OPTIONS
 
    -e, --extend
        Display additional information.  Use this option twice for maximum detail.
-       输出附加信息.
+       输出附加信息，可以两次使用，输出更多细节信息.
 
    -o, --timers
        Include information related to networking timers.
@@ -144,20 +163,19 @@ OPTIONS
        Print routing information from the route cache.
        输出路由缓存的路由信息
 
-OUTPUT
+OUTPUT(输出信息解释)
    Active Internet connections (TCP, UDP, UDPLite, raw)
    Proto
        The protocol (tcp, udp, udpl, raw) used by the socket.
-       socket的协议.
+       socket的协议类型
 
    Recv-Q
-       Established: The count of bytes not copied by the user program connected to  this
-       socket.
-       Listening:  Since  Kernel  2.6.18  this column contains the current syn backlog.
+       Established: The count of bytes not copied by the user program connected to this socket.
+       Listening: Since Kernel 2.6.18 this column contains the current syn backlog.
 
    Send-Q
-       Established: The count of bytes not acknowledged by the remote host.   Listening:
-       Since Kernel 2.6.18 this column contains the maximum size of the syn backlog.
+       Established: The count of bytes not acknowledged by the remote host.
+       Listening: Since Kernel 2.6.18 this column contains the maximum size of the syn backlog.
 
    Local Address
        Address  and  port  number  of the local end of the socket.  Unless the --numeric
@@ -179,9 +197,11 @@ OUTPUT
 
        SYN_SENT
               The socket is actively attempting to establish a connection.
+	      正积极尝试建立链接.
 
        SYN_RECV
               A connection request has been received from the network.
+	      接收到了一个链接请求.
 
        FIN_WAIT1
               The socket is closed, and the connection is shutting down.
@@ -205,15 +225,18 @@ OUTPUT
        LISTEN The  socket  is  listening for incoming connections.  Such sockets are not
               included in the output unless you specify the --listening  (-l)  or  --all
               (-a) option.
+	      监听状态的socket，此类的socket只有在指定了-l 或者-a 选项的时候才会显示.
 
        CLOSING
               Both sockets are shut down but we still don't have all our data sent.
+	      两个套接字都已经关闭，但是仍然没有发送所有数据.
 
        UNKNOWN
               The state of the socket is unknown.
 
    User
        The username or the user id (UID) of the owner of the socket.
+       拥有该socket 的用户.
 
    PID/Program name
        Slash-separated pair of the process id (PID) and process name of the process that
@@ -230,6 +253,7 @@ OUTPUT
 
    RefCnt
        The reference count (i.e. attached processes via this socket).
+       引用计数.
 
    Flags
        The flags displayed  is  SO_ACCEPTON  (displayed  as  ACC),  SO_WAITDATA  (W)  or
@@ -305,11 +329,14 @@ OUTPUT
 
 FILES
        /etc/services -- The services translation file
+                        服务翻译文件
 
        /proc -- Mount point for the proc filesystem, which gives access to kernel status
        information via the following files.
+       通过/proc 文件可以查看到内核的状态信息.
 
        /proc/net/dev -- device information
+                        设备信息
 
        /proc/net/raw -- raw socket information
 
