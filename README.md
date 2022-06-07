@@ -6,6 +6,8 @@ linux 调试和性能工具
 
 ## TODO
 
+* 网卡选项GRO、Jumbo帧等，能否用于提升性能？
+  * 网iperf测试TCP性能的时候，能抓到长度为20000+的包，此时是硬件特性还是软件特性导致的？
 * cpupower frequency-set -g performance 命令使用？
 * 真实用户ID，有效用户ID
 * 真实组ID，有效组ID
