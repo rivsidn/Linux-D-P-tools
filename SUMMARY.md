@@ -10,7 +10,7 @@
 
 ## LMbench
 * [LMbench](LMbench/README.md)
-  * [LMbench安装](LMbench/LMbench安装.md)
+  * [LMbench安装](LMbench/LMbench安装与使用.md)
 
 ## perf
 * [perf](perf/README.md)
