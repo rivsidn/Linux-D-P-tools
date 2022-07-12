@@ -2,6 +2,9 @@
 
 * [Introduction](README.md)
 
+## 硬件信息
+* [硬件信息](hardware/README.md)
+
 ## kpatch
 * [kpatch](kpatch/README.md)
   * [livepatch功能](kpatch/livepatch功能.md)
@@ -34,18 +37,21 @@
 
 ## manual
 * [manual](manual/README.md)
-  * [chrt](chrt.md)
-  * [netstat](netstat.md)
-  * [nice](nice.md)
-  * [pgrep](pgrep.md)
-  * [ps](ps.md)
-  * [renice](renice.md)
-  * [sched](sched.md)
-  * [sched\_setscheduler](sched_setscheduler.md)
-  * [ss](ss.md)
-  * [strace](strace.md)
-  * [taskset](taskset.md)
-  * [top](top.md)
+  * [chrt](manual/chrt.md)
+  * [dmidecode](manual/dmidecode.md)
+  * [lscpu](manual/lscpu.md)
+  * [lspci](manual/lspci.md)
+  * [netstat](manual/netstat.md)
+  * [nice](manual/nice.md)
+  * [pgrep](manual/pgrep.md)
+  * [ps](manual/ps.md)
+  * [renice](manual/renice.md)
+  * [sched](manual/sched.md)
+  * [sched\_setscheduler](manual/sched_setscheduler.md)
+  * [ss](manual/ss.md)
+  * [strace](manual/strace.md)
+  * [taskset](manual/taskset.md)
+  * [top](manual/top.md)
 
 ## misc
 * [misc](misc/README.md)
