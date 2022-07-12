@@ -5,6 +5,12 @@
 ## 硬件信息
 * [硬件信息](hardware/README.md)
 
+## 网络
+* [网络](network/README.md)
+  * [iperf](network/iperf.md)
+  * [nicstat](network/nicstat.md)
+  * [traceroute使用](network/traceroute使用.md)
+
 ## kpatch
 * [kpatch](kpatch/README.md)
   * [livepatch功能](kpatch/livepatch功能.md)
@@ -52,6 +58,7 @@
   * [strace](manual/strace.md)
   * [taskset](manual/taskset.md)
   * [top](manual/top.md)
+  * [traceroute](manual/traceroute.md)
 
 ## misc
 * [misc](misc/README.md)
