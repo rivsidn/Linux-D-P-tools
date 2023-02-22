@@ -7,6 +7,7 @@
 
 ## 网络
 * [网络](network/README.md)
+  * [ethtool设置](network/ethtool设置.md)
   * [iperf](network/iperf.md)
   * [nicstat](network/nicstat.md)
   * [traceroute使用](network/traceroute使用.md)
