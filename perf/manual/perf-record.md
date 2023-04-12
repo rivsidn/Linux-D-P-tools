@@ -22,6 +22,7 @@ DESCRIPTION
 OPTIONS
        <command>...
            Any command you can specify in a shell.
+	   可以是任意在shell中执行的命令.
 
        -e, --event=
            Select the PMU event. Selection can be:
@@ -32,13 +33,17 @@ OPTIONS
 
            •   a raw PMU event (eventsel+umask) in the form of rNNN where NNN is a
                hexadecimal event descriptor.
+	       一个原始的PMU事件
 
            •   a symbolic or raw PMU event followed by an optional colon and a list of
                event modifiers, e.g., cpu-cycles:p. See the perf-list(1) man page for
                details on event modifiers.
+	       一个符号或者原始的PMU事件，可以通过一个紧跟着的冒号+修改符修改，比如cpu-cycles:p.
+	       详细信息查看perf-list(1).
 
            •   a symbolically formed PMU event like pmu/param1=0x3,param2/ where param1,
                param2, etc are defined as formats for the PMU in
+	       符号形式的PMU事件可以加参数，参数在下边定义:
                /sys/bus/event_source/devices/<pmu>/format/*.
 
            •   a symbolically formed event like pmu/config=M,config1=N,config3=K/
@@ -116,6 +121,7 @@ OPTIONS
        --filter=<filter>
            Event filter. This option should follow an event selector (-e) which selects
            either tracepoint event(s) or a hardware trace PMU (e.g. Intel PT or CoreSight).
+	   事件过滤，过滤不必要的事件，需要跟在是-e 事件选择器之后.
 
            •   tracepoint filters
 
@@ -179,6 +185,7 @@ OPTIONS
 
        -a, --all-cpus
            System-wide collection from all CPUs (default if no target is specified).
+	   搜集系统范围内所有CPU的信息.
 
        -p, --pid=
            Record events on existing process ID (comma separated list).

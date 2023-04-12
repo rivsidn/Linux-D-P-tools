@@ -25,6 +25,7 @@
 ## perf
 * [perf](perf/README.md)
   * [perf安装](perf/perf安装.md)
+  * [perf与火焰图](perf/perf与火焰图.md)
   * [用户态进程性能统计](perf/用户态进程性能统计.md)
   * [perf manual](perf/manual/README.md)
     * [perf](perf/manual/perf.md)
