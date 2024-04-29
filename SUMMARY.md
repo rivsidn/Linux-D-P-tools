@@ -12,6 +12,10 @@
   * [nicstat](network/nicstat.md)
   * [traceroute使用](network/traceroute使用.md)
 
+## 内存
+* [内存](mm/README.md)
+  * [kmemleak使用](mm/kmemleak使用.md)
+
 ## kpatch
 * [kpatch](kpatch/README.md)
   * [livepatch功能](kpatch/livepatch功能.md)
